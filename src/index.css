@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Jost:wght@300;400;500;600&family=Lato:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --creme: 36 38% 88%;
+    --marrom: 14 50% 31%;
+    --marrom-wave: 14 38% 37%;
+    --texto: 14 78% 12%;
+    --suave: 28 30% 50%;
+
+    --background: var(--creme);
+    --foreground: var(--texto);
+    --card: var(--creme);
+    --card-foreground: var(--texto);
+    --popover: var(--creme);
+    --popover-foreground: var(--texto);
+    --primary: var(--marrom-wave);
+    --primary-foreground: var(--creme);
+    --secondary: var(--creme);
+    --secondary-foreground: var(--texto);
+    --muted: var(--creme);
+    --muted-foreground: var(--suave);
+    --accent: var(--marrom-wave);
+    --accent-foreground: var(--creme);
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: var(--creme);
+    --border: var(--marrom) / 0.15;
+    --input: var(--marrom) / 0.15;
+    --ring: var(--marrom-wave);
+    --radius: 1.25rem;
+    --whatsapp: 142 70% 49%;
+    --sidebar-background: var(--creme);
+    --sidebar-foreground: var(--texto);
+    --sidebar-primary: var(--marrom);
+    --sidebar-primary-foreground: var(--creme);
+    --sidebar-accent: var(--marrom-wave);
+    --sidebar-accent-foreground: var(--creme);
+    --sidebar-border: var(--marrom) / 0.1;
+    --sidebar-ring: var(--marrom-wave);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply text-foreground font-body antialiased;
+    background: hsl(var(--creme));
+    min-height: 100dvh;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+}
+
+@layer utilities {
+  .font-script {
+    font-family: 'Great Vibes', cursive;
+  }
+  .font-display {
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .font-body {
+    font-family: 'Lato', sans-serif;
+  }
+}
+
+@layer components {
+  .mimo-input {
+    @apply w-full border rounded-xl p-4 text-base outline-none transition-all;
+    background: hsl(var(--creme));
+    border-color: hsl(var(--marrom) / 0.2);
+  }
+  .mimo-input:focus {
+    box-shadow: 0 0 0 2px hsl(var(--marrom-wave));
+    border-color: hsl(var(--marrom-wave));
+  }
+
+  .mimo-card {
+    background: hsl(var(--creme));
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 20px;
+    border: 1px solid hsl(var(--marrom) / 0.15);
+    box-shadow: 0 8px 32px hsl(var(--marrom) / 0.08), 0 2px 8px hsl(var(--marrom) / 0.04);
+    overflow: hidden;
+    position: relative;
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .mimo-card:hover {
+    transform: translateY(-6px) rotate(0.5deg);
+    box-shadow: 0 20px 48px hsl(var(--marrom) / 0.14);
+    border-color: hsl(var(--marrom) / 0.3);
+  }
+
+  .mimo-combo-card {
+    background: hsl(var(--creme));
+    border: 2px solid hsl(var(--marrom-wave));
+    border-radius: 24px;
+    box-shadow: 0 8px 32px hsl(var(--marrom) / 0.08), 0 2px 8px hsl(var(--marrom) / 0.04);
+    overflow: hidden;
+    position: relative;
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .mimo-combo-card:hover {
+    transform: translateY(-6px) rotate(0.3deg);
+    box-shadow: 0 20px 48px hsl(var(--marrom) / 0.14);
+  }
+
+  .mimo-qty-btn {
+    @apply flex items-center justify-center;
+    width: 32px;
+    height: 32px;
+    border-radius: 100px;
+    background: hsl(var(--marrom-wave));
+    color: hsl(var(--creme));
+    border: none;
+    transition: background 0.2s ease, transform 0.15s ease;
+    cursor: pointer;
+  }
+  .mimo-qty-btn:hover {
+    background: hsl(var(--marrom));
+  }
+  .mimo-qty-btn:active {
+    transform: scale(0.9);
+  }
+
+  .mimo-cta-float {
+    background: linear-gradient(135deg, hsl(var(--marrom)) 0%, hsl(var(--marrom-wave)) 100%);
+    border-radius: 100px;
+    box-shadow: 0 12px 40px hsl(var(--marrom) / 0.4), 0 4px 12px hsl(var(--marrom) / 0.2);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .mimo-cta-float:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 48px hsl(var(--marrom) / 0.5), 0 6px 16px hsl(var(--marrom) / 0.25);
+  }
+  .mimo-cta-float:active {
+    transform: translateY(0);
+  }
+  .mimo-cta-float:disabled {
+    opacity: 0.5;
+    transform: none;
+    box-shadow: 0 4px 12px hsl(var(--marrom) / 0.15);
+  }
+
+  .mimo-discount-badge {
+    background: hsl(var(--marrom-wave) / 0.1);
+    border: 1px solid hsl(var(--marrom-wave) / 0.3);
+    color: hsl(var(--marrom));
+    border-radius: 100px;
+    padding: 4px 12px;
+    font-size: 12px;
+  }
+}
+
+/* Scroll reveal with stagger support */
+.mimo-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.mimo-reveal.mimo-stagger-1 { transition-delay: 0.08s; }
+.mimo-reveal.mimo-stagger-2 { transition-delay: 0.16s; }
+.mimo-reveal.mimo-stagger-3 { transition-delay: 0.24s; }
+.mimo-revealed .mimo-reveal,
+.mimo-reveal.mimo-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Golden shimmer */
+.mimo-shimmer {
+  position: relative;
+  display: inline-block;
+  text-shadow: 0 0 20px rgba(201, 169, 110, 0.35), 0 0 40px rgba(201, 169, 110, 0.15);
+}
+
+/* Golden line with animated shimmer sweep */
+.mimo-gold-line {
+  position: relative;
+  overflow: hidden;
+}
+.mimo-gold-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(201,169,110,0.5), transparent);
+  animation: mimo-shimmer-sweep 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Golden dot sparkle */
+.mimo-gold-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,169,110,0.7), rgba(201,169,110,0.2));
+  box-shadow: 0 0 6px rgba(201,169,110,0.4);
+  animation: mimo-badge-glow 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Golden border glow for elements */
+.mimo-gold-glow {
+  box-shadow: 0 0 12px rgba(201,169,110,0.15), 0 0 24px rgba(201,169,110,0.08);
+}
+
+/* Subtle badge pulse */
+.mimo-badge-pulse {
+  animation: mimo-badge-glow 3s ease-in-out infinite;
+}
+
+/* Press effect for interactive buttons */
+.mimo-press {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.mimo-press:active {
+  transform: scale(0.96) !important;
+}
+
+/* Section fade transition */
+.mimo-section-fade {
+  position: relative;
+}
+.mimo-section-fade::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: linear-gradient(180deg, rgba(133,76,58,0.08) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes mimo-fade-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes mimo-slide-right {
+  from { opacity: 0; transform: translateX(16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes mimo-scale-in {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes mimo-slide-up {
+  from { opacity: 0; transform: translate(-50%, 20px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+@keyframes mimo-bounce-down {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(8px); opacity: 0.6; }
+}
+@keyframes mimo-shimmer-sweep {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+@keyframes mimo-crumb-drift {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(calc(var(--crumb-y, 10px) * -1)) rotate(18deg); }
+  50% { transform: translateY(var(--crumb-y, 10px)) rotate(-14deg); }
+  75% { transform: translateY(calc(var(--crumb-y, 10px) * -0.6)) rotate(12deg); }
+}
+@keyframes mimo-badge-glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Desktop hero background */
+@media (min-width: 1024px) {
+  .mimo-hero-section {
+    background-image: var(--hero-bg-desktop);
+    background-size: 100% 100%;
+    background-position: top center;
+    background-repeat: no-repeat;
+  }
+  .mimo-hero-mobile-bg {
+    display: none !important;
+  }
+}
