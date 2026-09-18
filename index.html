@@ -196,10 +196,10 @@
             v.addEventListener('canplaythrough', resolve, { once: true });
             v.addEventListener('error', resolve, { once: true });
           };
-          var v = document.querySelector('#hero video');
+          var v = document.querySelector('#inicio video');
           if (v) return check(v);
           var observer = new MutationObserver(function() {
-            var v = document.querySelector('#hero video');
+            var v = document.querySelector('#inicio video');
             if (v) { observer.disconnect(); check(v); }
           });
           observer.observe(document.body, { childList: true, subtree: true });

@@ -7,6 +7,9 @@
 
 const WEBHOOK_URL = import.meta.env.VITE_N8N_WEBHOOK_URL as string | undefined;
 
+/** Usado pela UI para exibir um aviso de privacidade quando o rastreamento de funil está ativo. */
+export const isTrackingEnabled = Boolean(WEBHOOK_URL);
+
 const SESSION_KEY = "mimo_session_id";
 
 function getSessionId(): string {

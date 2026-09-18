@@ -3,7 +3,7 @@ const crumbs = Array.from({ length: 7 }, (_, i) => ({
   size: 3 + Math.random() * 3,
   left: 8 + Math.random() * 84,
   top: 10 + Math.random() * 80,
-  color: i % 2 === 0 ? "#854d3b" : "#c9a96e",
+  color: i % 2 === 0 ? "hsl(var(--marrom-wave))" : "hsl(var(--dourado))",
   opacity: 0.1 + Math.random() * 0.1,
   duration: 6 + Math.random() * 5,
   delay: Math.random() * 5,

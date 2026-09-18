@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss";
-import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
@@ -30,11 +29,16 @@ export default {
         accent: { DEFAULT: "hsl(var(--accent))", foreground: "hsl(var(--accent-foreground))" },
         popover: { DEFAULT: "hsl(var(--popover))", foreground: "hsl(var(--popover-foreground))" },
         card: { DEFAULT: "hsl(var(--card))", foreground: "hsl(var(--card-foreground))" },
-        creme: "hsl(var(--creme))",
-        marrom: { DEFAULT: "hsl(var(--marrom))", wave: "hsl(var(--marrom-wave))" },
-        texto: "hsl(var(--texto))",
-        suave: "hsl(var(--suave))",
-        whatsapp: "hsl(var(--whatsapp))",
+        // Estes usam o placeholder <alpha-value> (em vez de baixar a opacidade
+        // dentro da própria variável, como --border/--input abaixo) para que
+        // modificadores de opacidade do Tailwind funcionem, ex.: bg-marrom-wave/30.
+        creme: "hsl(var(--creme) / <alpha-value>)",
+        marrom: { DEFAULT: "hsl(var(--marrom) / <alpha-value>)", wave: "hsl(var(--marrom-wave) / <alpha-value>)" },
+        texto: "hsl(var(--texto) / <alpha-value>)",
+        suave: "hsl(var(--suave) / <alpha-value>)",
+        whatsapp: "hsl(var(--whatsapp) / <alpha-value>)",
+        dourado: "hsl(var(--dourado) / <alpha-value>)",
+        destaque: "hsl(var(--destaque) / <alpha-value>)",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -52,16 +56,12 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
-        "accordion-down": { from: { height: "0" }, to: { height: "var(--radix-accordion-content-height)" } },
-        "accordion-up": { from: { height: "var(--radix-accordion-content-height)" }, to: { height: "0" } },
         "mimo-fade-in": { from: { opacity: "0", transform: "translateY(12px)" }, to: { opacity: "1", transform: "translateY(0)" } },
         "mimo-slide-right": { from: { opacity: "0", transform: "translateX(16px)" }, to: { opacity: "1", transform: "translateX(0)" } },
         "mimo-scale-in": { from: { opacity: "0", transform: "scale(0.8)" }, to: { opacity: "1", transform: "scale(1)" } },
         "mimo-slide-up": { from: { opacity: "0", transform: "translate(-50%, 20px)" }, to: { opacity: "1", transform: "translate(-50%, 0)" } },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
         "mimo-fade-in": "mimo-fade-in 0.5s ease-out forwards",
         "mimo-slide-right": "mimo-slide-right 0.5s ease-out forwards",
         "mimo-scale-in": "mimo-scale-in 0.4s ease-out forwards",
@@ -69,5 +69,4 @@ export default {
       },
     },
   },
-  plugins: [tailwindcssAnimate],
 } satisfies Config;
